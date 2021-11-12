@@ -1,0 +1,65 @@
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-image: url("images/background.jpg");
+    padding: 0%; margin: 0%;
+    background-color: #181818; 
+    color:white; 
+    font-family:Arial;
+}
+
+#login{
+    overflow: hidden;
+    background-color: #363940;
+    text-align: center;
+    width: 25em;
+    opacity: 97%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10%;
+}
+
+p{
+    padding: -1%;
+} 
+
+#email, #password{
+    font-size: 20px;
+    background: #323338;
+    width: 250px;
+    height: 40px;
+    color: white;
+}
+
+#apply{
+    background: #323338;
+    width: 150px;
+    height: 50px;
+    color: white;
+    font-size: 30px;
+}
+
+#rightdata, #wrongdata{
+    font-size: 15px;
+    font-style: italic;
+}
+#rightdata{
+    color: forestgreen;
+}
+#wrongdata{
+    color: orangered;
+}
+
+#message{
+    color: white;
+}
+
+#message>a:visited{
+    color: white;
+    text-decoration: none;
+}
