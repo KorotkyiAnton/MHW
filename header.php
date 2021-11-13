@@ -55,19 +55,19 @@
                         if($row['status']) {
                             echo "<div>
                                       <span style='color: green;'>●</span>
-                                      <a href='entry.php'>⎆</a>
+                                      <a href='login.php'>⎆</a>
                                   </div>";
                         }
                         if(!$row['status']) {
                             echo "<div>
                                       <span style='color: red'>●</span>
-                                      <a href='entry.php'>⎆</a>
+                                      <a href='login.php'>⎆</a>
                                   </div>";
                         }
                     }else {
                     echo "<div>
                                       <span style='color: red'>●</span>
-                                      <a href='entry.php'>⎆</a>
+                                      <a href='login.php'>⎆</a>
                                   </div>";
                 }
                     ?>

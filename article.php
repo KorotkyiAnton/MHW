@@ -63,7 +63,7 @@
             <input type="submit" class="comment_aply">
         </form>
         <?php } else{
-            echo "<a href='entry.php'>Войдите,</a> чтобы писать комментарии.";
+            echo "<a href='login.php'>Войдите,</a> чтобы писать комментарии.";
         }?>
         <?php
             $request = mysqli_query($connection, "

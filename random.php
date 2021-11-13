@@ -26,9 +26,9 @@
         header("Location:index.php");
    } elseif ($_POST['username']=="" or $_POST['userpass']==""){
         $_SESSION['validation']="noReqests";
-        header("Location:entry.php");
+        header("Location:login.php");
     } else{
         $_SESSION['validation']="incorrect";
-        header("Location:entry.php");
+        header("Location:login.php");
     }
 
