@@ -1,8 +1,6 @@
 <?php
     session_start();
-    $login = "antondp750@gmail.com";
-    $password = "assistant";
-    $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+    include "db_conf.php";
     if(!$connection){
         echo 'connection lost';
         exit();
@@ -20,7 +18,11 @@
         $_SESSION['validation']="correct";
         setcookie("login", $row["login"]);
         setcookie("nickname", $row["nickname"]);
-        $result = mysqli_query($connection, "UPDATE user_access_data SET status='1' WHERE login='".$_COOKIE['login']."'");
+        $login = '';
+        if(isset($_COOKIE['login'])){
+            $login = $_COOKIE['login'];
+        }
+        $result = mysqli_query($connection, "UPDATE user_access_data SET status='1' WHERE login='".$login."'");
         header("Location:index.php");
    } elseif ($_POST['username']=="" or $_POST['userpass']==""){
         $_SESSION['validation']="noReqests";

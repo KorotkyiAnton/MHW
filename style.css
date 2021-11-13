@@ -1,3 +1,4 @@
+/*main style*/
 html{
     height: 100%;
 }
@@ -6,23 +7,24 @@ body{
     padding: 0%;
     margin: 0%;
     color: white;
-    background: #161b1e;
+    background: #161b1e; /*<= back for all website*/
     height: 100%;
     font-family: Arial, Helvetica, sans-serif;
 }
+/*--------------------------------------------END OF MAIN PART--------------------------------------------*/
 
-header span{
-    max-width: 100%;
-}
-
+/*heder style*/
 header{
     max-width: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
-    font-size: 1em;
+    font-size: 2.5em; /*<= font-size in header*/
 }
-
+/*header link style:
+- Menu btn;
+-Login btn;
+- Main and side menu bars.*/
 header a{
     padding: 0.3%;
     text-decoration: none;
@@ -31,73 +33,100 @@ header a{
 }
 
 header img{
-    height: 1.2em;
+    height: 1.5em; /*<= size of gamekot and gamekotmain*/
 }
 
+/*styles for all elements in header bar*/
 .header-bar{
     margin:0.2% 0.7% 0%;
     display: flex;
     flex-direction: row;
 }
 
+.item{
+    text-align: center;
+    margin-right: 5px;
+}
+
+.item:hover{
+    background: #323338;
+    opacity: 80%;
+    border-radius: 5px;
+    border-bottom: white solid;
+}
+
 .left{
     display: flex;
     flex-direction: row;
     text-align: left;
-    width: 10%;
+    width: 20%;
 }
 
 .center{
-    font-size: 1em;
     text-align: center;
-    width: 80%;
-    max-width: 80%;
+    width: 60%;
 }
 
 .right{
     text-align: right;
-    width: 10%;
+    width: 20%;
 }
 
+.side-menu{
+    max-height: 2em;
+    height: 1.5em;
+}
+
+/*--------------------------------------------END OF HEADER PART--------------------------------------------*/
+
+/*main block style*/
 main{
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /*<= articles direction*/
     padding: 20px;
     margin-top: 20px;
-    margin-left: auto;
+    margin-left: auto; /*<= justify dont work, centralisation*/
     margin-right: auto;
     color: black;
     width: 85%;
     background: white;
     border-radius: 10px;
-    min-height: 90%;
+    min-height: 90%; /*<= press down footer to bottom*/
 }
 
+/*drop-down menu*/
 .side-menu-items{
     text-align: center;
     display: flex;
     flex-direction: row;
 }
 
-footer{
-    margin-top: 20px;
-    padding: 20px;
-    background: #323338;
-}
-
-footer a{
-    color: white;
+/*style for shown articles*/
+main>a{
     text-decoration: none;
+    color: black;
 }
 
+main>a:visited{
+    color: black;
+}
+
+/*styles for article area*/
 .article_photo>img{
-    width: 200px;
-    height: 150px;
-    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s;
 }
 
 .article_photo{
+    height: 300px;
+    border-radius: 5px;
     margin-right: 10px;
+    overflow: hidden;
+}
+
+.article_photo>img:hover{
+    transform: scale(1.1);
 }
 
 .article_pre{
@@ -110,8 +139,17 @@ footer a{
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
+.article_pre:hover{
+    background: whitesmoke;
+}
+
 .article_title{
     font-weight: bold;
+    font-size: 2em;
+}
+
+.article_pubdate, .article_views{
+    font-size: 1.5em;
 }
 
 .article_text{
@@ -119,12 +157,52 @@ footer a{
     flex-direction: column;
 }
 
-main>a{
-    text-decoration: none;
-    color: black;
+.img_in_article{
+    width: 500px;
+    max-width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-main>a:visited{
-    color: black;
+/*style for window with comments*/
+.comment_area{
+    margin-bottom: 10px;
+}
+
+.commet_text{
+    width: 80%;
+    height: 50px;
+}
+
+.comment_aply{
+    width: 200px;
+    height: 50px;
+}
+
+.show_comm_pubdate{
+    font-style: italic;
+    margin-top: 10px;
+}
+
+.show_comm_author{
+    font-weight: bold;
+}
+
+.show_comm_text{
+    margin-top: 5px;
+}
+/*--------------------------------------------END OF MAIN BLOCK PART--------------------------------------------*/
+
+/*footer styles*/
+footer{
+    margin-top: 20px;
+    padding: 20px;
+    background: #323338;
+}
+
+footer a{
+    color: white;
+    text-decoration: none;
 }
 

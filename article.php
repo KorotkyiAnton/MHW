@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="src/favicon/favicon1.ico" type="image/png">
     <script src="script.js"></script>
     <?php
-    $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+    include "db_conf.php";
     if(!$connection){
         echo 'connection lost';
         exit();
@@ -41,7 +41,7 @@
             echo $article["pubdate"]."<br>";
             echo htmlspecialchars_decode($article["text"], ENT_QUOTES );
             mysqli_close($connection);
-            $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+            include "db_conf.php";
             if(!$connection){
                 echo 'connection lost';
                 exit();
@@ -55,12 +55,12 @@
             $acc = $request->fetch_assoc();
         ?>
     </div>
-    <div class="comment_area" style="margin-bottom: 10px">
+    <div class="comment_area">
         <?php
         if($acc['status']){?>
         <form action="article.php?id=<?php echo $_GET['id']?>" method="post">
-            <input type="text" name="comment" placeholder="Write your comment" style="width: 80%; height: 50px"><br>
-            <input type="submit" style="width: 200px; height: 50px">
+            <input type="text" name="comment" placeholder="Write your comment" class="commet_text"><br>
+            <input type="submit" class="comment_aply">
         </form>
         <?php } else{
             echo "<a href='entry.php'>Войдите,</a> чтобы писать комментарии.";
@@ -83,9 +83,9 @@
                 exit();
             }
             while ($comment = $request->fetch_assoc()){
-                echo "<div style='font-style: italic; margin-top: 10px'>".$comment['pubdate']."</div>";
-                echo "<div style='font-weight: bold'>".$comment['author']."</div>";
-                echo "<p style='margin-top: 5px'>".htmlspecialchars_decode($comment['text'], ENT_QUOTES )."</p>";
+                echo "<div class='show_comm_pubdate'>".$comment['pubdate']."</div>";
+                echo "<div class='show_comm_author'>".$comment['author']."</div>";
+                echo "<p class='show_comm_text'>".htmlspecialchars_decode($comment['text'], ENT_QUOTES )."</p>";
             }
         ?>
     </div>

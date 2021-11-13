@@ -19,12 +19,12 @@ include "header.php";
 
     <main id="main">
         <?php
-            $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+            include "db_conf.php";
             if(!$connection){
                 echo 'connection lost';
                 exit();
             }
-            if(!empty($_GET)){
+            if(isset($_GET['article_id'])){
                 $request = mysqli_query($connection, "
                 SELECT id, photo, title, pubdate, views FROM articles WHERE categorie_id='".(int)$_GET['article_id']."'");
             } else {

@@ -12,10 +12,10 @@
         <!-- Средняя часть хедера с логотипом и основным меню -->
         <div class="center">
             <div class="logo">
-                <span id="center-logo" style="display: none;"><a href="index.php"><img style="height: 1.5em" src="src/gamekot.png" alt="logo"></a></span>
+                <span id="center-logo" style="display: none;"><a href="index.php"><img src="src/gamekot.png" alt="logo"></a></span>
             </div>
 
-            <nav class="main-menu" id="main-menu" style = "font-size: 0.89em">
+            <nav class="main-menu" id="main-menu">
                 <div class="main-menu-items">
                     <a class="item" href="index.php?article_id=<?php echo 1?>">
                         <span class="text">Игры</span>
@@ -39,27 +39,37 @@
         <div class="right">
             <span>
                 <?php
-                    $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+                    $login = "";
+                    include "db_conf.php";
                     if(!$connection){
                         echo 'connection lost';
                         exit();
                     }
+                    if(isset($_COOKIE['login'])){
+                        $login = $_COOKIE['login'];
+                    }
                     $request = mysqli_query($connection, "
-                            SELECT status FROM user_access_data WHERE login='".$_COOKIE['login']."'");
+                        SELECT status FROM user_access_data WHERE login='" . $login . "'");
+
                     if($request and !empty($row = $request->fetch_assoc())){
                         if($row['status']) {
-                            echo "<div style = 'font-size: 1em'>
+                            echo "<div>
                                       <span style='color: green;'>●</span>
                                       <a href='entry.php'>⎆</a>
                                   </div>";
                         }
-                        
-                    }if (!$row['status']) {
-                            echo "<div style = 'font-size: 1em'>
+                        if(!$row['status']) {
+                            echo "<div>
                                       <span style='color: red'>●</span>
                                       <a href='entry.php'>⎆</a>
                                   </div>";
                         }
+                    }else {
+                    echo "<div>
+                                      <span style='color: red'>●</span>
+                                      <a href='entry.php'>⎆</a>
+                                  </div>";
+                }
                     ?>
 </span>
         </div>

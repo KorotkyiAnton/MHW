@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex">
     <title>Регистрация</title>
     <link href="style_entry.css" type="text/css" rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon1.ico" type="image/png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
 
 </head>
 <body>
@@ -22,7 +22,7 @@
             <p><input id="apply" type="submit" value="Ок"></p>
         </form>
         <?php
-            $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+            include "db_conf.php";
             if (!$connection) {
                 echo 'connection lost';
                 exit();
@@ -33,7 +33,7 @@
                 $password = password_hash($_POST["userpass"], PASSWORD_DEFAULT);
                 $ip = $_SERVER['REMOTE_ADDR'];
                 if(is_null($username) and is_null($password) and is_null($nickname))
-                $result = mysqli_query($connection, "INSERT INTO user_access_data (login, password, nickname, ip) VALUES ('$username', '$password', '$nickname', '$ip')");
+                    $result = mysqli_query($connection, "INSERT INTO user_access_data (login, password, nickname, ip) VALUES ('$username', '$password', '$nickname', '$ip')");
                 header("Location:entry.php");
             }
             ?>

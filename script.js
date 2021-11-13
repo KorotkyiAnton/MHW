@@ -6,7 +6,6 @@ function resizeMenuBar(){
         document.getElementById("center-logo").style.display="block";
         document.getElementById("main-menu").style.display="none";
         document.getElementById("side-menu-items").style.flexDirection = "row";
-        document.getElementById("entry_yes").style.fontSize=14;
     }else if(window.innerWidth<=640){
         document.getElementById("menu-btn").innerHTML="≋";
         document.getElementById("side-menu-items").style.flexDirection = "column";
@@ -14,13 +13,11 @@ function resizeMenuBar(){
         document.getElementById("main-logo").style.display="none";
         document.getElementById("menu-btn").style.display="block";
         document.getElementById("center-logo").style.display="block";
-        document.getElementById("entry_yes").style.fontSize=14;
     }else{
         document.getElementById("main-logo").style.display= "block";
         document.getElementById("menu-btn").style.display="none";
         document.getElementById("center-logo").style.display="none";
         document.getElementById("main-menu").style.display="block";
-        document.getElementById("entry_yes").style.fontSize=14;
     }
 }
 

@@ -40,8 +40,7 @@ include "header.php";
         <span>Вы добавите:</span>
         <div class="write_content">
             <?php
-
-            $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+            include "db_conf.php";
             if (!$connection) {
                 echo 'connection lost';
                 exit();
@@ -63,7 +62,7 @@ include "header.php";
                             foreach ($_FILES as $file_key => $file){
                                 if((int)chunk_split($key,1,"-")==(int)chunk_split($file_key,1,"-")-1){
                                     move_uploaded_file($_FILES[$file_key]['tmp_name'], "uploaded/".$file_key.$_FILES[$file_key]['name']);?>
-                                    <?php $HTML_CONTENT.= '<img style="width: 500px; max-width: 100%; display: block; margin-left: auto; margin-right: auto" src="uploaded/'.$file_key . $_FILES[$file_key]['name'].'">';
+                                    <?php $HTML_CONTENT.= '<img class="img_in_article" src="uploaded/'.$file_key . $_FILES[$file_key]['name'].'">';
                                 }
                             }
                         }

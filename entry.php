@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex">
     <title>Вход</title>
     <link href="style_entry.css" type="text/css" rel="stylesheet">
-    <link rel="shortcut icon" href="images/favicon1.ico" type="image/png">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/png">
 
 </head>
 <body>
@@ -21,23 +21,27 @@
             <p><input id="apply" type="submit" value="Войти"></p>
         </form>
         <?php
-            $connection = mysqli_connect('127.0.0.1', 'korotkyianton', '2002&2004aA', 'korotkyianton');
+            $login = "";
+            include "db_conf.php";
             if(!$connection){
                 echo 'connection lost';
                 exit();
             }
+            if(isset($_COOKIE['login'])){
+                $login = $_COOKIE['login'];
+            }
             $request = mysqli_query($connection, "
-                                SELECT status FROM user_access_data WHERE login='".$_COOKIE['login']."'");
+                                SELECT status FROM user_access_data WHERE login='".$login."'");
             if($request and $row = $request->fetch_assoc()) {
                 if($row['status']){
-                    $result = mysqli_query($connection, "UPDATE user_access_data SET status='0' WHERE login='".$_COOKIE['login']."'");
+                    $result = mysqli_query($connection, "UPDATE user_access_data SET status='0' WHERE login='".$login."'");
                     header("Location:index.php");
                 }
             }
 
             session_start();
             if(empty($_SESSION)){
-                echo "<p id='message'>Нет аккаунта?<a href='reg.php'>Зарегистрируйтесь!</a></p>";
+                echo "<p id='message'>Нет аккаунта? <a href='reg.php'>Зарегистрируйтесь!</a></p>";
             } else {
                 switch ($_SESSION['validation']) {
                     case "correct":
@@ -47,7 +51,7 @@
                         break;
                     case "noReqests":
                         $_SESSION['validation'] = "noReqests";
-                        echo "<p id='message'>Нет аккаунта?<a href='reg.php' style='text-decoration: none; color: white'>Зарегистрируйтесь!</a></p>";
+                        echo "<p id='message'>Нет аккаунта? <a href='reg.php' style='text-decoration: none; color: white'>Зарегистрируйтесь!</a></p>";
                         session_destroy();
                         break;
                     case "incorrect":
