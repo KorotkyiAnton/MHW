@@ -37,7 +37,7 @@ include "header.php";
             }
 
             while ($row = $request->fetch_assoc()){?>
-                <a class='article_pre' href="article.php?id=<?php echo $row['id']?>">
+                <a class='article_pre' id="article_pre" href="article.php?id=<?php echo $row['id']?>">
                     <div class='article_photo'>
                         <img src="<?php echo $row['photo']?>" alt='img'>
                     </div>

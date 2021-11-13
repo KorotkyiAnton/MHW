@@ -6,6 +6,14 @@ function resizeMenuBar(){
         document.getElementById("center-logo").style.display="block";
         document.getElementById("main-menu").style.display="none";
         document.getElementById("side-menu-items").style.flexDirection = "row";
+        document.getElementsByClassName("article_pre")
+        var x = document.getElementsByClassName("article_pre")
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.width="45%";
+            x[i].style.maxWidth="45%";
+        }
+        document.getElementById("main").style.flexFlow = "row wrap";
     }else if(window.innerWidth<=640){
         document.getElementById("menu-btn").innerHTML="≋";
         document.getElementById("side-menu-items").style.flexDirection = "column";
@@ -13,11 +21,25 @@ function resizeMenuBar(){
         document.getElementById("main-logo").style.display="none";
         document.getElementById("menu-btn").style.display="block";
         document.getElementById("center-logo").style.display="block";
+        var x = document.getElementsByClassName("article_pre")
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.width="100%";
+            x[i].style.maxWidth="100%";
+        }
+        document.getElementById("main").style.flexFlow = "column wrap";
     }else{
         document.getElementById("main-logo").style.display= "block";
         document.getElementById("menu-btn").style.display="none";
         document.getElementById("center-logo").style.display="none";
         document.getElementById("main-menu").style.display="block";
+        var x = document.getElementsByClassName("article_pre")
+        var i;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.width="45%";
+            x[i].style.maxWidth="45%";
+        }
+        document.getElementById("main").style.flexFlow = "row wrap";
     }
 }
 
