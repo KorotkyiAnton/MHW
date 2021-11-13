@@ -75,7 +75,7 @@
         </div>
     </div>
 
-    <nav class="side-menu" id="side-menu" style="display: none; overflow: hidden;">
+    <nav class="side-menu" id="side-menu" style="display: none; overflow: hidden; position: relative">
         <div class="side-menu-items" id="side-menu-items">
             <a class="item" href="index.php?article_id=<?php echo 1?>">
                 <span class="text">Игры</span>

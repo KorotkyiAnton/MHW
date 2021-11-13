@@ -72,9 +72,13 @@ header img{
     width: 20%;
 }
 
-.side-menu{
-    max-height: 2em;
-    height: 1.5em;
+
+
+/*drop-down menu*/
+.side-menu-items{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
 }
 
 /*--------------------------------------------END OF HEADER PART--------------------------------------------*/
@@ -86,7 +90,6 @@ main{
     flex-flow: row wrap;
     justify-content: center;
     padding: 20px;
-    margin-top: 20px;
     margin-left: auto; /*<= justify dont work, centralisation*/
     margin-right: auto;
     color: black;
@@ -94,13 +97,6 @@ main{
     background: white;
     border-radius: 10px;
     min-height: 90%; /*<= press down footer to bottom*/
-}
-
-/*drop-down menu*/
-.side-menu-items{
-    text-align: center;
-    display: flex;
-    flex-direction: row;
 }
 
 /*style for shown articles*/
