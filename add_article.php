@@ -68,12 +68,13 @@ include "header.php";
                         }
                     }
                     echo $HTML_CONTENT;
+                    include "db_conf.php";
                     move_uploaded_file($_FILES["main_photo"]['tmp_name'], "uploaded/main_photo".$_FILES["main_photo"]['name']);
                     $photo_dir = "uploaded/main_photo".$_FILES["main_photo"]['name'];
-                    $title = $_POST["main_title"];
+                    $title = htmlspecialchars($_POST["main_title"], ENT_QUOTES);
                     $cat_id = $_POST["categorie_id"];
                     $HTML_CONTENT = htmlspecialchars($HTML_CONTENT, ENT_QUOTES);
-                    $result = mysqli_query($connection, "INSERT INTO articles (photo, title, `text`, categorie_id) VALUES ('$photo_dir', '$title', '$HTML_CONTENT', '$cat_id')");
+                    $result = mysqli_query($connection, "INSERT INTO articles (photo, `title`, `text`, categorie_id) VALUES ('$photo_dir', '$title', '$HTML_CONTENT', '$cat_id')");
 
                     if ($result == false) {
                         print("Произошла ошибка при выполнении запроса");

@@ -19,6 +19,7 @@
             <p><input id="email" type="email" placeholder="Type your E-mail" name="username"></p>
             <p><input id="password" type="password" placeholder="Type your password" name="userpass"></p>
             <p><input id="apply" type="submit" value="Войти"></p>
+            <a href='index.php' style='text-decoration: none; color: white'>На главную</a>
         </form>
         <?php
             $login = "";

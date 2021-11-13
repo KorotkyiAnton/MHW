@@ -83,9 +83,9 @@
                 exit();
             }
             while ($comment = $request->fetch_assoc()){
-                echo "<div class='show_comm_pubdate'>".$comment['pubdate']."</div>";
-                echo "<div class='show_comm_author'>".$comment['author']."</div>";
-                echo "<p class='show_comm_text'>".htmlspecialchars_decode($comment['text'], ENT_QUOTES )."</p>";
+                echo "<div class='full_comm'><div class='show_comm_pubdate'>".$comment['pubdate']."</div>".
+                     "<div class='show_comm_author'>".$comment['author']."</div>".
+                     "<p class='show_comm_text'>".strip_tags(htmlspecialchars_decode($comment['text'], ENT_QUOTES ))."</p></div>";
             }
         ?>
     </div>

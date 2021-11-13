@@ -37,16 +37,14 @@ include "header.php";
             }
 
             while ($row = $request->fetch_assoc()){?>
-                <a href="article.php?id=<?php echo $row['id']?>">
-                    <div class='article_pre'>
-                        <div class='article_photo'>
-                            <img src="<?php echo $row['photo']?>" alt='img'>
-                        </div>
-                        <div class='article_text'>
-                            <div class='article_title'><?php echo $row['title'] ?> </div>
-                            <div class='article_pubdate'><?php echo $row['pubdate'] ?> </div>
-                            <div class='article_views'> <?php echo $row['views']."🕶️"?></div>
-                        </div>
+                <a class='article_pre' href="article.php?id=<?php echo $row['id']?>">
+                    <div class='article_photo'>
+                        <img src="<?php echo $row['photo']?>" alt='img'>
+                    </div>
+                    <div class='article_text'>
+                        <div class='article_title'><?php echo htmlspecialchars_decode($row['title'], ENT_QUOTES )?> </div>
+                        <div class='article_pubdate'><?php echo $row['pubdate'] ?> </div>
+                        <div class='article_views'> <?php echo $row['views']."🕶️"?></div>
                     </div>
                 </a>
             <?php }

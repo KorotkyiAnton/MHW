@@ -20,6 +20,7 @@
             <p><input id="email" type="text" placeholder="Type your nickname" name="nickname"></p>
             <p><input id="password" type="password" placeholder="Type your password" name="userpass"></p>
             <p><input id="apply" type="submit" value="Ок"></p>
+            <a href='entry.php' style='text-decoration: none; color: white'>Войти</a>
         </form>
         <?php
             include "db_conf.php";
