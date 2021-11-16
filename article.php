@@ -46,48 +46,59 @@
                 echo 'connection lost';
                 exit();
             }
+
+            $login = "";
+            if(isset($_COOKIE["login"])){
+                $login=$_COOKIE["login"];
+            }
+
+
             $request = mysqli_query($connection, "
-                        SELECT status, nickname FROM user_access_data WHERE login='".$_COOKIE['login']."'");
+                        SELECT status, nickname FROM user_access_data WHERE login='".$login."'");
             if(!$request){
                 echo 'request lost';
                 exit();
             }
-            $acc = $request->fetch_assoc();
         ?>
     </div>
     <div class="comment_area">
         <?php
-        if($acc['status']){?>
-        <form action="article.php?id=<?php echo $_GET['id']?>" method="post">
-            <input type="text" name="comment" placeholder="Write your comment" class="commet_text"><br>
-            <input type="submit" class="comment_aply">
-        </form>
-        <?php } else{
-            echo "<a href='login.php'>Войдите,</a> чтобы писать комментарии.";
-        }?>
-        <?php
-            $request = mysqli_query($connection, "
-                            SELECT status, nickname FROM user_access_data WHERE ip='".$_SERVER['REMOTE_ADDR']."'");
-            if (!empty($_POST)){
-                $author = $_COOKIE['nickname'];
-                $comment_text = htmlspecialchars($_POST['comment'], ENT_QUOTES);;
-                $art_id =(int)$_GET['id'];
-                if(!empty($comment_text)){
-                    $result = mysqli_query($connection, "INSERT INTO comments (author, `text`, articles_id) VALUES ('$author', '$comment_text', '$art_id')");
-                }
+        if($request and !empty($acc = $request->fetch_assoc())){
+            if($acc['status']){?>
+            <form action="article.php?id=<?php echo $_GET['id']?>" method="post">
+                <textarea name="comment" class="commet_text" placeholder="Write your comment"></textarea><br>
+                <input type="submit" class="comment_aply">
+            </form>
+            <?php }else {
+                echo "<a href='login.php'>Войдите,</a> чтобы писать комментарии.";
             }
-            $request = mysqli_query($connection, "
-                SELECT pubdate, author, `text` FROM comments WHERE articles_id='".(int)$_GET['id']."'");
-            if(!$request){
-                echo 'request lost';
-                exit();
-            }
-            while ($comment = $request->fetch_assoc()){
-                echo "<div class='full_comm'><div class='show_comm_pubdate'>".$comment['pubdate']."</div>".
-                     "<div class='show_comm_author'>".$comment['author']."</div>".
-                     "<p class='show_comm_text'>".strip_tags(htmlspecialchars_decode($comment['text'], ENT_QUOTES ))."</p></div>";
-            }
+        }
         ?>
+        <div class="commentators_area">
+            <?php
+                $request = mysqli_query($connection, "
+                                SELECT status, nickname FROM user_access_data WHERE ip='".$_SERVER['REMOTE_ADDR']."'");
+                if (!empty($_POST)){
+                    $author = $_COOKIE['nickname'];
+                    $comment_text = htmlspecialchars($_POST['comment'], ENT_QUOTES);;
+                    $art_id =(int)$_GET['id'];
+                    if(!empty($comment_text)){
+                        $result = mysqli_query($connection, "INSERT INTO comments (author, `text`, articles_id) VALUES ('$author', '$comment_text', '$art_id')");
+                    }
+                }
+                $request = mysqli_query($connection, "
+                    SELECT pubdate, author, `text` FROM comments WHERE articles_id='".(int)$_GET['id']."'");
+                if(!$request){
+                    echo 'request lost';
+                    exit();
+                }
+                while ($comment = $request->fetch_assoc()){
+                    echo "<div class='full_comm'><div class='show_comm_pubdate'>".$comment['pubdate']."</div>".
+                         "<div class='show_comm_author'>".$comment['author']."</div>".
+                         "<p class='show_comm_text'>".strip_tags(htmlspecialchars_decode($comment['text'], ENT_QUOTES ))."</p></div>";
+                }
+            ?>
+        </div>
     </div>
 </main>
 

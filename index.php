@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="bEt_Lw6XIKQGx7kpSEZil9O9IfmeogU5rtBcVYUQYYg" />
-    <link rel="shortcut icon" href="src/favicon.ico" type="image/png">
     <link href="style.css" type="text/css" rel="stylesheet">
     <link rel="shortcut icon" href="src/favicon/favicon1.ico" type="image/png">
     <script src="script.js"></script>

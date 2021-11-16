@@ -80,20 +80,20 @@ let part_count = 0;
 
 function insertTitle(){
     part_count++;
-    document.getElementById("work_area").innerHTML+="<p><input style='width: 100%; height: 150px' type='text' placeholder='Write title here' name='"+part_count+"-h1"+"'></p>";
+    document.getElementById("work_area").innerHTML+="<p><textarea style='width: 100%;' type='text' placeholder='Write title here' name='"+part_count+"-h1"+"'></textarea></p>";
 }
 
 function insertSubTitle(){
     part_count++;
-    document.getElementById("work_area").innerHTML+="<p><input style='width: 100%; height: 150px' id='subtitle' type='text' placeholder='Write subtitle here' name='"+part_count+"-subtitle"+"'></p>";
+    document.getElementById("work_area").innerHTML+="<p><textarea style='width: 100%;' id='subtitle' type='text' placeholder='Write subtitle here' name='"+part_count+"-subtitle"+"'></textarea></p>";
 }
 
 function insertText(){
     part_count++;
-    document.getElementById("work_area").innerHTML+="<p><input style='width: 100%; height: 150px' type='text' placeholder='Write text here' name='"+part_count+"-text"+"'></p>";
+    document.getElementById("work_area").innerHTML+="<p><textarea style='width: 100%;' type='text' placeholder='Write text here' name='"+part_count+"-text"+"'></textarea></p>";
 }
 
 function insertImg(){
     part_count++;
-    document.getElementById("work_area").innerHTML += "<p><input style='width: 100%; height: 150px' type='file' name='" + part_count + "-img"+ "'></p>";
+    document.getElementById("work_area").innerHTML += "<p><input style='width: 100%;' type='file' name='" + part_count + "-img"+ "'></p>";
 }
